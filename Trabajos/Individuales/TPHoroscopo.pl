@@ -11,16 +11,7 @@ signoPdeP(objetos, 22, 8, 28, 11).
 
 % Reglas:
 
-esMenor(PrimerNumero, CotaInferior) :-
-    CotaInferior >= PrimerNumero.
-
-esMayor(PrimerNumero, CotaSuperior) :- 
-    CotaSuperior =< PrimerNumero.
-
-estaEnElRango(Numero, CotaInferior, CotaSuperior) :-
-    esMenor(Numero, CotaInferior), esMayor(Numero, CotaSuperior).
-
 horoscopoPdep(Nombre, Signo) :- 
     nacio(Nombre, _, DiaDeNac, MesDeNac, _),
-    signoPdeP(Signo, DiaDeInc, MesDeInc, DiaFinal, MesFinal),
-    estaEnElRango(DiaDeNac, DiaDeInc, DiaFinal), estaEnElRango(MesDeNac, MesDeInc, MesFinal).
+    signoPdeP(Signo, DiaDeInicio, MesDeInicio, DiaFinal, MesFinal),
+    ((MesDeNac = MesDeInicio , DiaDeNac >= DiaDeInicio) ; (MesDeNac = MesFinal, DiaDeNac =< DiaFinal)).
